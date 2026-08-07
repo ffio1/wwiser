@@ -41,6 +41,7 @@ bank_versions = [
      72, #0x48 Wwise 2012.2     [Metal Gear Rising (PC/X360)-most banks, Saints Row IV (PC), South Park: The Stick of Truth (PC)]
      88, #0x58 Wwise 2013.1/2   [Bayonetta 2 (WiiU), Devil's Third (WiiU), Total War: Rome (PC)]
      89, #0x59 Wwise 2013.2-B? *[Destiny (PS4)]
+     91, #0x5B Wwise 2013.2?   *[Rocksmith 2014 (PC/Mac)-custom]
     112, #0x70 Wwise 2014.1     [Transformers (PS3/X360), Oddworld (Vita), Star Fox Zero (WiiU)-buggy, Star Fox Guard (WiiU)-buggy, Plants vs Zombies 2 (Android), Total War: Attila (PC)]
     113, #0x71 Wwise 2015.1     [Nier Automata (PC), Doom 2016 (PC), South Park: The Fractured But Whole (PC)]
     118, #0x76 Wwise 2016.1     [WipEout: Omega Collection (PS4), Coffence (PC), Mario + Rabbids Kingdom Battle (Switch)]
@@ -546,8 +547,8 @@ AkPropID_065 = wfmt.FormatterLUT({
   0x17: "OutputBusVolume?",
   0x18: "OutputBusLPF?",
 })
-#088<=
-AkPropID_088 = wfmt.FormatterLUT({
+#091<=
+AkPropID_091 = wfmt.FormatterLUT({
   0x00: "Volume",
   0x01: "LFE",
   0x02: "Pitch",
@@ -1066,8 +1067,8 @@ AkPropID_tids = {
     "AttachedPluginFXID", "AttenuationID"
 }
 
-#046>= 088<=
-AkBank__AKBKSourceType_088 = wfmt.FormatterLUT({
+#046>= 091<=
+AkBank__AKBKSourceType_091 = wfmt.FormatterLUT({
     0x00: "Data/bnk", #just "Data" but added "bnk" for clarity
     0x01: "Streaming",
     0x02: "PrefetchStreaming",
@@ -1397,8 +1398,8 @@ AkBelowThresholdBehavior = wfmt.FormatterLUT({
   0x3: "KillIfOneShotElseVirtual", #later 088>>
 })
 
-#065>= 088<=
-AkClipAutomationType_088 = wfmt.FormatterLUT({
+#065>= 091<=
+AkClipAutomationType_091 = wfmt.FormatterLUT({
   0x0: "Volume",
   0x1: "LPF",
   0x2: "FadeIn",
@@ -1670,8 +1671,8 @@ AkRTPC_ParameterID_072 = wfmt.FormatterLUT({
 
  #0x3E: "?", #Metal Gear Rising (found near "DB" scaling, some volume?)
 })
-#088==
-AkRTPC_ParameterID_088 = wfmt.FormatterLUT({
+#088>= 091<=
+AkRTPC_ParameterID_091 = wfmt.FormatterLUT({
   0x0: "Volume",
   0x1: "LFE",
   0x2: "Pitch",
@@ -2320,8 +2321,8 @@ def setup(version):
         AkRTPC_ParameterID = AkRTPC_ParameterID_065
     elif version <= 72:
         AkRTPC_ParameterID = AkRTPC_ParameterID_072
-    elif version <= 89:
-        AkRTPC_ParameterID = AkRTPC_ParameterID_088
+    elif version <= 91:
+        AkRTPC_ParameterID = AkRTPC_ParameterID_091
     elif version <= 113:
         AkRTPC_ParameterID = AkRTPC_ParameterID_113
     elif version <= 118:
@@ -2350,8 +2351,8 @@ def setup(version):
         AkActionType = AkActionType_062
 
     global AkBank__AKBKSourceType
-    if  version <= 89:
-        AkBank__AKBKSourceType = AkBank__AKBKSourceType_088
+    if  version <= 91:
+        AkBank__AKBKSourceType = AkBank__AKBKSourceType_091
     else:
         AkBank__AKBKSourceType = AkBank__AKBKSourceType_112
 
@@ -2360,8 +2361,8 @@ def setup(version):
         AkPropID = AkPropID_062
     elif  version <= 65:
         AkPropID = AkPropID_065
-    elif  version <= 89:
-        AkPropID = AkPropID_088
+    elif  version <= 91:
+        AkPropID = AkPropID_091
     elif version <= 113:
         AkPropID = AkPropID_113
     elif version <= 126:
@@ -2388,8 +2389,8 @@ def setup(version):
         AkBuiltInParam = AkBuiltInParam_128
 
     global AkClipAutomationType
-    if version <= 89:
-        AkClipAutomationType = AkClipAutomationType_088
+    if version <= 91:
+        AkClipAutomationType = AkClipAutomationType_091
     else:
         AkClipAutomationType = AkClipAutomationType_112
 
